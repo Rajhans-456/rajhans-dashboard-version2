@@ -77,5 +77,7 @@ export default function CustomersWithoutLoans() {
       </div>
     </main>
     </DashboardLayout>
+
+    
   );
 }

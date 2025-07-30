@@ -9,7 +9,7 @@ body {
   background: linear-gradient(122deg, #f8fafc 0%, #e2e8f0 100%);
 }
 
-.main-container {
+.main-container1 {
   width: 100%;
   max-width: 1285px;
   min-height: 100vh;
@@ -28,9 +28,7 @@ body {
   height: auto;
 }
 
-.page-header1 {
-  margin-bottom: 32px;
-}
+
 
 .page-title1 {
   font-size: 28px;

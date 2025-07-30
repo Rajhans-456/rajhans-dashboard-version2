@@ -1,13 +1,12 @@
 import React, { useState, useEffect, useCallback } from "react";
-import { useNavigate } from "react-router-dom"; 
+import { useNavigate } from "react-router-dom";
 import DashboardLayout from "@/components/layout/DashboardLayout";
-import '../../style/CoBorrowerEntry.css';
+import "../../style/GuarantorEntry.css";
 import AddressCard from "@/components/AddressCard";
 import PhotoUpload from "@/components/PhotoUpload";
 
 
-
-const CoBorrowerEntry = () => {
+const GuarantorEntry = () => {
   const [sidebarActive, setSidebarActive] = useState(false);
   const [activeMenu, setActiveMenu] = useState("customer-entry");
   const [loading, setLoading] = useState(false);
@@ -15,7 +14,7 @@ const CoBorrowerEntry = () => {
 
   // Form data state
   const [formData, setFormData] = useState({
-    coborrowerId: "101-CU-004837",
+    guarantorId: "101-CU-004837",
     entryDate: new Date().toISOString().split("T")[0],
     customertype: "New",
     photo: null,
@@ -291,27 +290,28 @@ const navigate = useNavigate();
 
   return (
     <DashboardLayout>
-    <div className="main-container">
+    <div className="main-container1">
 
       {/* Main Content */}
       <div className="main-content">
         <div className="page-header1">
-          <h1 className="page-title1">New Co-Borrower Entry</h1>
+          <h1 className="page-title1">New Guarantor Entry</h1>
           <div className="breadcrumb">
             <span>Entries</span>
-            <span>Co-Borrower Entry</span>
+            <span>Guarantor Entry</span>
             <span>New</span>
           </div>
         </div>
 
-        <div className="coborrowerform-container">
-          <div className="coborrower-id-section">
+        <div className="guarantorform-container">
+          {/* Guarantor ID Section */}
+          <div className="guarantor-id-section">
             <div className="form-group">
-              <label className="form-label" >Co-Borrower ID</label>
+              <label className="form-label" >Guarantor ID</label>
               <input
                 type="text"
                 className="form-input"
-                value={formData.coborrowerId}
+                value={formData.guarantorId}
                 readOnly
               />
             
@@ -336,7 +336,7 @@ const navigate = useNavigate();
 
             <div class="form-group" >
               <label class="form-label">Title</label>
-              <select class="form-select" id="title">
+              <select class="form-select1" id="title">
                 <option value="Mr.">Mr.</option>
                 <option value="Mrs.">Mrs.</option>
                 <option value="Ms.">Ms.</option>
@@ -348,18 +348,18 @@ const navigate = useNavigate();
           <div className="form-row">
             
             <div className="form-group">
-              <label className="form-label">Co-Borrower Name</label>
+              <label className="form-label">Guarantor Name *</label>
               <input
                 type="text"
                 className="form-input"
                 value={formData.customerName}
-                onChange={(e) => handleInputChange("coborrowerName", e.target.value)}
+                onChange={(e) => handleInputChange("guarantorName", e.target.value)}
                 placeholder="Enter full name"
                 required
               />
             </div>
             <div className="form-group">
-              <label className="form-label">Father Name</label>
+              <label className="form-label">Father Name *</label>
               <input
                 type="text"
                 className="form-input"
@@ -373,7 +373,7 @@ const navigate = useNavigate();
 
           <div className="form-row">
              <div className="form-group">
-              <label className="form-label">Mother Name</label>
+              <label className="form-label">Mother Name *</label>
               <input
                 type="text"
                 className="form-input"
@@ -384,7 +384,7 @@ const navigate = useNavigate();
               />
             </div>
             <div className="form-group">
-              <label className="form-label">Date of Birth</label>
+              <label className="form-label">Date of Birth *</label>
               <div className="date-input">
                 <input
                   type="date"
@@ -431,7 +431,7 @@ const navigate = useNavigate();
 
           <div className="form-row">
             <div className="form-group">
-              <label className="form-label">Primary Number</label>
+              <label className="form-label">Primary Number *</label>
               <input
                 type="tel"
                 className="form-input"
@@ -458,7 +458,7 @@ const navigate = useNavigate();
               />
             </div>
             <div className="form-group">
-              <label className="form-label">Email Address</label>
+              <label className="form-label">Email Address *</label>
               <input
                 type="email"
                 className="form-input"
@@ -475,16 +475,17 @@ const navigate = useNavigate();
           <h2 className="section-header">Additional Information</h2>
 
           <div className="form-row">
-            <div class="form-group" >
-            <label class="form-label">Collection Area</label>
-            <select class="form-select" id="collection-area">
-              <option value>Select Area</option>
-              <option value="north">North Zone</option>
-              <option value="south">South Zone</option>
-              <option value="east">East Zone</option>
-              <option value="west">West Zone</option>
-            </select>
-          </div>
+            <div className="form-group">
+              <label className="form-label">Vehicle Reg. No</label>
+              <input
+                type="text"
+                className="form-input"
+                value={formData.pan}
+                onChange={(e) =>
+                  handleInputChange("vehicleregno.", e.target.value.toUpperCase())}
+                placeholder="Enter Please"
+               />
+           </div>
           </div>
 
 
@@ -500,8 +501,8 @@ const navigate = useNavigate();
     <button className="btn btn-primary" onClick={() => handleSaveAndGoto("/document-entry")}>
       Save and Go to Document Entry
     </button>
-    <button className="btn btn-primary" onClick={() => handleSaveAndGoto("/customer-entry")}>
-      Save and Go to Customer Entry
+    <button className="btn btn-primary" onClick={() => handleSaveAndGoto("/loan-entry")}>
+      Save and Go to Loan Entry
     </button>
   </div>
 </div>
@@ -513,4 +514,4 @@ const navigate = useNavigate();
   );
 };
 
-export default CoBorrowerEntry;
+export default GuarantorEntry;
